@@ -1,0 +1,11 @@
+Source: sonic-centec-platform-modules
+Section: main
+Priority: extra
+Maintainer: shil <shil@centecnetworks.com>
+Build-Depends: debhelper (>= 8.0.0), bzip2
+Standards-Version: 3.9.3
+
+Package: platform-modules-e530-48t4x-p
+Architecture: arm64
+Depends: linux-image-4.9.62-arm64
+Description: kernel modules for platform devices such as fan, led, sfp

@@ -37,7 +37,10 @@ if [[ $CONFIGURED_ARCH == armhf || $CONFIGURED_ARCH == arm64 ]]; then
 else
     DOCKER_VERSION=5:18.09.8~3-0~debian-stretch
 fi
-LINUX_KERNEL_VERSION=4.9.0-9-2
+
+if [ -z $LINUX_KERNEL_VERSION ]; then
+    LINUX_KERNEL_VERSION=4.9.0-9-2
+fi
 
 ## Working directory to prepare the file system
 FILESYSTEM_ROOT=./fsroot

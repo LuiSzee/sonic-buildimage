@@ -1,0 +1,2 @@
+systemctl enable 24t16y_platform.service
+systemctl start 24t16y_platform.service

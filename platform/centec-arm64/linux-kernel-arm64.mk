@@ -1,29 +1,19 @@
 # linux kernel package for centec arm64
 
-#KVERSION = 4.9.168
-
-
-#LINUX_KERNEL = linux-image-4.9.168-arm64.deb
-#export LINUX_KERNEL
-
-#$(LINUX_KERNEL)_SRC_PATH = $(PLATFORM_PATH)/linux
-#SONIC_MAKE_DEBS += $(LINUX_KERNEL)
-
-
 export KVERSION= 4.9.62
- 
-LINUX_KERNEL= linux-image-4.9.62-arm64.deb
-$(LINUX_KERNEL)_PATH = /sonic
-SONIC_COPY_DEBS += $(LINUX_KERNEL)
+export LINUX_KERNEL_VERSION=4.9.62_4.9.62
 
-LINUX_KERNEL_DEBIMG = linux-libc-dev_4.9.62-1_arm64.deb
-$(LINUX_KERNEL_DEBIMG)_PATH = /sonic
-SONIC_COPY_DEBS += $(LINUX_KERNEL_DEBIMG)
+LINUX_KERNEL = linux-image-4.9.62-arm64.deb
+$(LINUX_KERNEL)_URL = https://github.com/CentecNetworks/sonic-binaries/raw/master/$(PLATFORM_ARCH)/kernel/$(LINUX_KERNEL)
+SONIC_ONLINE_DEBS += $(LINUX_KERNEL)
+SONIC_STRETCH_DEBS += $(LINUX_KERNEL)
 
-LINUX_KERNEL_HEADERS= linux-headers-4.9.62_4.9.62-1_arm64.deb
-$(LINUX_KERNEL_HEADERS)_PATH = /sonic
-SONIC_COPY_DEBS += $(LINUX_KERNEL_HEADERS)
+LINUX_KERNEL_DEBIMG = linux-image-4.9.62_4.9.62-1_arm64.deb
+$(LINUX_KERNEL_DEBIMG)_URL = https://github.com/CentecNetworks/sonic-binaries/raw/master/$(PLATFORM_ARCH)/kernel/$(LINUX_KERNEL_DEBIMG)
+SONIC_ONLINE_DEBS += $(LINUX_KERNEL_DEBIMG)
+SONIC_STRETCH_DEBS += $(LINUX_KERNEL_DEBIMG)
 
-#LINUX_KERNEL_LIBC = linux-libc-dev_4.9.62-1_arm64.deb
-#$(LINUX_KERNEL_LIBC)_PATH = /sonic
-#SONIC_COPY_DEBS += $(LINUX_KERNEL_LIBC)
+LINUX_KERNEL_HEADERS = linux-headers-4.9.62_4.9.62-1_arm64.deb
+$(LINUX_KERNEL_HEADERS)_URL = https://github.com/CentecNetworks/sonic-binaries/raw/master/$(PLATFORM_ARCH)/kernel/$(LINUX_KERNEL_HEADERS)
+SONIC_ONLINE_DEBS += $(LINUX_KERNEL_HEADERS)
+SONIC_STRETCH_DEBS += $(LINUX_KERNEL_HEADERS)

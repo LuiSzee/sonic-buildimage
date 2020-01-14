@@ -1,0 +1,73 @@
+#!/bin/bash
+# This script load/unload centec kernel modules
+
+### BEGIN INIT INFO
+# Provides:          platform-modules-e550-24x8y2c
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Load Centec kernel modules
+### END INIT INFO
+
+# function create_devices()
+# {
+#     #rm -f /dev/linux_dal0
+#     #rm -f /dev/linux_dal1
+# 
+#     # mknod /dev/linux_dal0                         c 198 0
+#     # mknod /dev/linux_dal1                         c 199 0
+# 
+# }
+
+function load_kernel_modules()
+{
+    depmod -a
+    modprobe centec_e550_24x8y2c_platform
+    modprobe dal
+}
+
+#function config_hardware()
+#{
+#    echo 0x58 > /sys/devices/platform/soc/2190000.i2c/i2c-1/1-0036/epld/epld_addr
+#}
+
+function remove_kernel_modules()
+{
+    modprobe -r dal
+    #modprobe -r centec_e550_24x8y2c_platform
+}
+
+case "$1" in
+start)
+    echo -n "Load Centec kernel modules... "
+
+    # create_devices
+    load_kernel_modules
+    # config_hardware
+
+    echo "done."
+    ;;
+
+stop)
+    echo -n "Unload Centec kernel modules... "
+
+    remove_kernel_modules
+
+    echo "done."
+    ;;
+
+force-reload|restart)
+    echo "Not supported"
+    ;;
+
+*)
+    echo "Usage: /etc/init.d/platform-modules-e550-24x8y2c {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+

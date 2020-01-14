@@ -1,0 +1,3 @@
+24x8y2c/modules/dal.ko /lib/modules/4.9.62/kernel/extra
+24x8y2c/modules/centec_e550_24x8y2c_platform.ko /lib/modules/4.9.62/kernel/extra
+24x8y2c/service/24x8y2c_platform.service /lib/systemd/system
